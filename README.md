@@ -1,4 +1,4 @@
-# Evidence-Grounded Early-Warning Pipeline
+# An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning
 
 Anonymous reproducibility artifact accompanying a submission under review.
 
