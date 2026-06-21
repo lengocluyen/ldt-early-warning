@@ -81,7 +81,7 @@ To rerun without installing dependencies again:
 | `tab_transformer` | DDD, core models plus TABTX | Neural-model validation |
 | `sklearn_modern` | DDD, core models plus RF/ET/HGB/TABTX | Extended benchmark without LightGBM/CatBoost |
 | `modern` | DDD, full modern model set | Extended benchmark |
-| `publication_full` | All eligible modules, full model set and XGBoost grid search | Deliberately expensive complete benchmark |
+| `run_full` | All eligible modules, full model set and XGBoost grid search | Deliberately expensive complete benchmark |
 
 Run the main all-module experiment:
 
@@ -92,7 +92,7 @@ Run the main all-module experiment:
 The full benchmark can take a very long time. It requires an explicit confirmation:
 
 ```bash
-CONFIRM_LONG_RUN=1 ./run_pipeline.sh --preset publication_full
+CONFIRM_LONG_RUN=1 ./run_pipeline.sh --preset run_full
 ```
 
 Each preset maps to a version-controlled configuration under `config/`. The fixed hyperparameters, checkpoints, seed, and model choices used for a run are therefore inspectable and reproducible.

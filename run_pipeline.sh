@@ -12,7 +12,7 @@ Usage: ./run_pipeline.sh [--preset NAME] [--skip-install] [--no-venv]
 Presets:
   smoke             DDD Week 4 only; fastest end-to-end sanity check
   full_run          all modules with LR/XGB/XGB-LDT (default)
-  publication_full  expensive all-modules modern benchmark with XGB grid search
+  run_full          expensive all-modules modern benchmark with XGB grid search
   core              LR-raw, XGB-raw, XGB-LDT
   tab_transformer   core + TABTX
   sklearn_modern    core + RF, ET, HGB, TABTX
@@ -77,8 +77,8 @@ case "$PRESET" in
     CONFIG="config/experiment_all_modules.yaml"
     REQUIREMENTS="requirements-core.txt"
     ;;
-  publication_full)
-    CONFIG="config/experiment_publication_full.yaml"
+  run_full)
+    CONFIG="config/experiment_run_full.yaml"
     REQUIREMENTS="requirements.txt"
     ;;
   *)
@@ -89,15 +89,15 @@ case "$PRESET" in
 esac
 
 case "$PRESET" in
-  publication_full)
+  run_full)
     if [[ "${CONFIRM_LONG_RUN:-0}" != "1" ]]; then
       cat >&2 <<'EOF'
-Preset 'publication_full' is intentionally expensive. Your last DDD modern run took about 5 days,
+Preset 'run_full' is intentionally expensive. Your last DDD modern run took about 5 days,
 and this preset can take substantially longer because it runs all modules with modern models and
 XGBoost grid search.
 
 To run it anyway:
-  CONFIRM_LONG_RUN=1 ./run_pipeline.sh --preset publication_full
+  CONFIRM_LONG_RUN=1 ./run_pipeline.sh --preset run_full
 
 For the normal paper tables, use the default:
   ./run_pipeline.sh
