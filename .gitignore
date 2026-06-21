@@ -5,6 +5,9 @@
 # Citation metadata is retained locally until the anonymous review period ends.
 /CITATION.cff
 
+# Methodology notes are retained locally during the anonymous review period.
+/ldt_evidence_grounded_early_warning_spec.md
+
 # Derived data and experiment artifacts.
 /data/processed/
 /data/splits/
