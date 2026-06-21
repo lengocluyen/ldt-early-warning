@@ -1,0 +1,63 @@
+@prefix ldt: <http://example.org/ldt#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+ldt: a owl:Ontology ;
+    rdfs:label "Incremental Learner Digital Twin ontology" .
+
+ldt:Learner a owl:Class .
+ldt:Course a owl:Class .
+ldt:LearningResource a owl:Class .
+ldt:LearningTrace a owl:Class .
+ldt:Assessment a owl:Class .
+ldt:AssessmentResult a owl:Class .
+ldt:RegistrationEvent a owl:Class .
+ldt:RawRecord a owl:Class ; rdfs:subClassOf prov:Entity .
+ldt:Checkpoint a owl:Class .
+ldt:PredictionRun a owl:Class ; rdfs:subClassOf prov:Activity .
+ldt:PredictionFeature a owl:Class ; rdfs:subClassOf prov:Entity .
+ldt:FeatureAttribution a owl:Class ; rdfs:subClassOf prov:Entity .
+ldt:EvidenceItem a owl:Class ; rdfs:subClassOf prov:Entity .
+ldt:RiskAlert a owl:Class ; rdfs:subClassOf prov:Entity .
+
+ldt:ActivityEvidence a owl:Class ; rdfs:subClassOf ldt:EvidenceItem .
+ldt:AssessmentEvidence a owl:Class ; rdfs:subClassOf ldt:EvidenceItem .
+ldt:TemporalEvidence a owl:Class ; rdfs:subClassOf ldt:EvidenceItem .
+ldt:AbsenceEvidence a owl:Class ; rdfs:subClassOf ldt:EvidenceItem .
+
+ldt:enrolledIn a owl:ObjectProperty .
+ldt:inCourse a owl:ObjectProperty .
+ldt:registrationOf a owl:ObjectProperty .
+ldt:performedBy a owl:ObjectProperty .
+ldt:concerns a owl:ObjectProperty .
+ldt:submits a owl:ObjectProperty .
+ldt:concernsAssessment a owl:ObjectProperty .
+ldt:fromRecord a owl:ObjectProperty .
+ldt:atCheckpoint a owl:ObjectProperty .
+ldt:describes a owl:ObjectProperty .
+ldt:supportedBy a owl:ObjectProperty ; rdfs:subPropertyOf prov:wasDerivedFrom .
+ldt:refersTo a owl:ObjectProperty .
+ldt:hasAttribution a owl:ObjectProperty .
+ldt:justifiedBy a owl:ObjectProperty .
+ldt:derivedFrom a owl:ObjectProperty ; rdfs:subPropertyOf prov:wasDerivedFrom .
+ldt:generatedBy a owl:ObjectProperty .
+
+ldt:hasClickCount a owl:DatatypeProperty .
+ldt:onDay a owl:DatatypeProperty .
+ldt:hasScore a owl:DatatypeProperty .
+ldt:submittedOnDay a owl:DatatypeProperty .
+ldt:sourceTable a owl:DatatypeProperty .
+ldt:rowId a owl:DatatypeProperty .
+ldt:featureName a owl:DatatypeProperty .
+ldt:hasValue a owl:DatatypeProperty .
+ldt:hasShapValue a owl:DatatypeProperty .
+ldt:riskProbability a owl:DatatypeProperty .
+ldt:text a owl:DatatypeProperty .
+ldt:strength a owl:DatatypeProperty .
+ldt:evidenceType a owl:DatatypeProperty .
+ldt:coverageKind a owl:DatatypeProperty .
+ldt:checkpointDay a owl:DatatypeProperty .
+ldt:modelName a owl:DatatypeProperty .

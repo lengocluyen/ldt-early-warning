@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner (MAX(?day) AS ?last_active_day)
+WHERE {
+  ?learner a ldt:Learner .
+  OPTIONAL {
+    ?trace a ldt:LearningTrace ;
+           ldt:performedBy ?learner ;
+           ldt:onDay ?day .
+  }
+}
+GROUP BY ?learner

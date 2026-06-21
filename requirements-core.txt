@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+rdflib
+pyshacl
+pyyaml
+tqdm
+matplotlib

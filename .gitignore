@@ -1,0 +1,36 @@
+# Local OULAD data. Keep only the acquisition instructions in version control.
+/Oulab/*
+!/Oulab/README.md
+
+# Citation metadata is retained locally until the anonymous review period ends.
+/CITATION.cff
+
+# Derived data and experiment artifacts.
+/data/processed/
+/data/splits/
+/results/*
+!/results/README.md
+/results_v1/
+
+# Python environments, caches, coverage, and test outputs.
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Operating-system and editor files.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+
+# Manuscript sources and build products are maintained locally and published separately.
+/latex/

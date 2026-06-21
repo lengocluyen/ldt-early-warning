@@ -1,0 +1,35 @@
+data_dir: Oulab
+results_dir: results
+namespace: http://example.org/ldt#
+kg_feature_engine: indexed
+checkpoints:
+  - day: 28
+    name: Week 4
+  - day: 56
+    name: Week 8
+  - day: 84
+    name: Week 12
+modules: null
+top_k:
+  - 3
+  - 5
+alert_threshold: 0.5
+random_state: 42
+max_scale_pos_weight: 20
+extended_models: false
+xgboost_grid_search: false
+n_jobs: -1
+models:
+  - method: LR
+    feature_source: raw
+  - method: XGB
+    feature_source: raw
+  - method: XGB
+    feature_source: kg
+xgboost:
+  n_estimators: 300
+  max_depth: 3
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_lambda: 5

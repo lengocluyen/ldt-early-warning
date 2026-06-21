@@ -1,0 +1,10 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+ASK {
+  ?alert a ldt:RiskAlert ;
+         ldt:hasAttribution ?attr .
+  ?attr ldt:refersTo ?feature .
+  ?feature ldt:supportedBy ?evidence .
+  ?evidence ldt:derivedFrom ?raw .
+  ?raw a ldt:RawRecord .
+}

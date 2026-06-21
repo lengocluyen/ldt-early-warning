@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner (COUNT(DISTINCT ?resource) AS ?distinct_resources)
+WHERE {
+  ?learner a ldt:Learner .
+  OPTIONAL {
+    ?trace a ldt:LearningTrace ;
+           ldt:performedBy ?learner ;
+           ldt:concerns ?resource .
+  }
+}
+GROUP BY ?learner

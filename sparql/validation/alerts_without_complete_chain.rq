@@ -1,0 +1,13 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?alert
+WHERE {
+  ?alert a ldt:RiskAlert .
+  FILTER NOT EXISTS {
+    ?alert ldt:hasAttribution ?attr .
+    ?attr ldt:refersTo ?feature .
+    ?feature ldt:supportedBy ?evidence .
+    ?evidence ldt:derivedFrom ?raw .
+    ?raw a ldt:RawRecord .
+  }
+}

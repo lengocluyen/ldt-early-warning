@@ -1,0 +1,68 @@
+@prefix ldt: <http://example.org/ldt#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ldt:CheckpointShape a sh:NodeShape ;
+    sh:targetClass ldt:Checkpoint ;
+    sh:property [ sh:path ldt:checkpointDay ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:RawRecordShape a sh:NodeShape ;
+    sh:targetClass ldt:RawRecord ;
+    sh:property [ sh:path ldt:sourceTable ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:rowId ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:RegistrationEventShape a sh:NodeShape ;
+    sh:targetClass ldt:RegistrationEvent ;
+    sh:property [ sh:path ldt:registrationOf ; sh:class ldt:Learner ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:fromRecord ; sh:class ldt:RawRecord ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:LearningTraceShape a sh:NodeShape ;
+    sh:targetClass ldt:LearningTrace ;
+    sh:property [ sh:path ldt:performedBy ; sh:class ldt:Learner ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:concerns ; sh:class ldt:LearningResource ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:hasClickCount ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:onDay ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:fromRecord ; sh:class ldt:RawRecord ; sh:minCount 1 ] .
+
+ldt:AssessmentShape a sh:NodeShape ;
+    sh:targetClass ldt:Assessment ;
+    sh:property [ sh:path ldt:inCourse ; sh:class ldt:Course ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:onDay ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:fromRecord ; sh:class ldt:RawRecord ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:AssessmentResultShape a sh:NodeShape ;
+    sh:targetClass ldt:AssessmentResult ;
+    sh:property [ sh:path ldt:concernsAssessment ; sh:class ldt:Assessment ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:submittedOnDay ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:fromRecord ; sh:class ldt:RawRecord ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:PredictionRunShape a sh:NodeShape ;
+    sh:targetClass ldt:PredictionRun ;
+    sh:property [ sh:path ldt:modelName ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:EvidenceItemShape a sh:NodeShape ;
+    sh:targetClass ldt:EvidenceItem ;
+    sh:property [ sh:path ldt:derivedFrom ; sh:class ldt:RawRecord ; sh:minCount 1 ] ;
+    sh:property [ sh:path ldt:text ; sh:minCount 1 ] ;
+    sh:property [ sh:path ldt:strength ; sh:datatype xsd:decimal ; sh:minCount 1 ] ;
+    sh:property [ sh:path ldt:evidenceType ; sh:minCount 1 ] .
+
+ldt:PredictionFeatureShape a sh:NodeShape ;
+    sh:targetClass ldt:PredictionFeature ;
+    sh:property [ sh:path ldt:describes ; sh:class ldt:Learner ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:featureName ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:hasValue ; sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:atCheckpoint ; sh:class ldt:Checkpoint ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:FeatureAttributionShape a sh:NodeShape ;
+    sh:targetClass ldt:FeatureAttribution ;
+    sh:property [ sh:path ldt:refersTo ; sh:class ldt:PredictionFeature ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:hasShapValue ; sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ldt:RiskAlertShape a sh:NodeShape ;
+    sh:targetClass ldt:RiskAlert ;
+    sh:property [ sh:path ldt:describes ; sh:class ldt:Learner ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:atCheckpoint ; sh:class ldt:Checkpoint ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:generatedBy ; sh:class ldt:PredictionRun ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ldt:hasAttribution ; sh:class ldt:FeatureAttribution ; sh:minCount 1 ] ;
+    sh:property [ sh:path ldt:justifiedBy ; sh:class ldt:EvidenceItem ; sh:minCount 1 ] .

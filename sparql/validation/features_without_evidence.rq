@@ -1,0 +1,13 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?feature ?learner ?featureName
+WHERE {
+  ?feature a ldt:PredictionFeature ;
+           ldt:describes ?learner ;
+           ldt:featureName ?featureName .
+  FILTER NOT EXISTS {
+    ?feature ldt:supportedBy ?evidence .
+    ?evidence ldt:derivedFrom ?raw .
+    ?raw a ldt:RawRecord .
+  }
+}

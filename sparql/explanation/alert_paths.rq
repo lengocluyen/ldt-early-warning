@@ -1,0 +1,15 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?alert ?featureName ?shapValue ?featureValue ?evidenceText ?raw
+WHERE {
+  ?alert a ldt:RiskAlert ;
+         ldt:hasAttribution ?attr .
+  ?attr ldt:refersTo ?feature ;
+        ldt:hasShapValue ?shapValue .
+  ?feature ldt:featureName ?featureName ;
+           ldt:hasValue ?featureValue ;
+           ldt:supportedBy ?evidence .
+  ?evidence ldt:text ?evidenceText ;
+            ldt:derivedFrom ?raw .
+}
+ORDER BY ?alert DESC(ABS(?shapValue))

@@ -1,0 +1,14 @@
+PREFIX ldt: <http://example.org/ldt#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# The executable implementation binds ?window_start = tau - 28 and
+# ?window_end = tau - 1. It computes the two 14-day log windows in Python
+# because SPARQL 1.1 support for log functions varies by engine.
+SELECT ?learner ?day ?clicks
+WHERE {
+  ?trace a ldt:LearningTrace ;
+         ldt:performedBy ?learner ;
+         ldt:onDay ?day ;
+         ldt:hasClickCount ?clicks .
+  FILTER(?day >= ?window_start && ?day <= ?window_end)
+}

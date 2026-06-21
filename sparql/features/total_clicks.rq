@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner (COALESCE(SUM(?clicks), 0) AS ?total_clicks)
+WHERE {
+  ?learner a ldt:Learner .
+  OPTIONAL {
+    ?trace a ldt:LearningTrace ;
+           ldt:performedBy ?learner ;
+           ldt:hasClickCount ?clicks .
+  }
+}
+GROUP BY ?learner

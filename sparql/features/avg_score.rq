@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner (AVG(?score) AS ?avg_score)
+WHERE {
+  ?learner a ldt:Learner .
+  OPTIONAL {
+    ?learner ldt:submits ?result .
+    ?result a ldt:AssessmentResult ;
+            ldt:hasScore ?score .
+  }
+}
+GROUP BY ?learner

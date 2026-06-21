@@ -1,0 +1,12 @@
+data_dir: Oulab
+processed_dir: data/processed
+splits_dir: data/splits
+label:
+  at_risk:
+    - Fail
+    - Withdrawn
+  not_at_risk:
+    - Pass
+    - Distinction
+exclude:
+  withdraw_before_start: true

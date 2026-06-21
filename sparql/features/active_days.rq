@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner (COUNT(DISTINCT ?day) AS ?active_days)
+WHERE {
+  ?learner a ldt:Learner .
+  OPTIONAL {
+    ?trace a ldt:LearningTrace ;
+           ldt:performedBy ?learner ;
+           ldt:onDay ?day .
+  }
+}
+GROUP BY ?learner

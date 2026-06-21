@@ -1,0 +1,12 @@
+PREFIX ldt: <http://example.org/ldt#>
+
+SELECT ?learner ?submittedDay ?dueDay
+WHERE {
+  ?learner a ldt:Learner ;
+           ldt:submits ?result .
+  ?result a ldt:AssessmentResult ;
+          ldt:submittedOnDay ?submittedDay ;
+          ldt:concernsAssessment ?assessment .
+  ?assessment ldt:onDay ?dueDay .
+  FILTER(?submittedDay > ?dueDay)
+}
