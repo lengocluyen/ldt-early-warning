@@ -8,6 +8,9 @@
 # Methodology notes are retained locally during the anonymous review period.
 /ldt_evidence_grounded_early_warning_spec.md
 
+# Contribution guidance is maintained locally during the anonymous review period.
+/CONTRIBUTING.md
+
 # Derived data and experiment artifacts.
 /data/processed/
 /data/splits/
