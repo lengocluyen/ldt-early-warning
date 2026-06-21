@@ -83,7 +83,7 @@ To rerun without installing dependencies again:
 |---|---|---|
 | `smoke` | DDD, Week 4, core models | Installation and end-to-end validation |
 | `core` | DDD, Weeks 4/8/12, core models | Fast module-level development run |
-| `publication_core` | All eligible modules, core models | Recommended all-module reproduction run |
+| `full_run` | All eligible modules, core models | Recommended all-module reproduction run |
 | `tab_transformer` | DDD, core models plus TABTX | Neural-model validation |
 | `sklearn_modern` | DDD, core models plus RF/ET/HGB/TABTX | Extended benchmark without LightGBM/CatBoost |
 | `modern` | DDD, full modern model set | Extended benchmark |
@@ -92,7 +92,7 @@ To rerun without installing dependencies again:
 Run the main all-module experiment:
 
 ```bash
-./run_pipeline.sh --preset publication_core
+./run_pipeline.sh --preset full_run
 ```
 
 The full benchmark can take a very long time. It requires an explicit confirmation:

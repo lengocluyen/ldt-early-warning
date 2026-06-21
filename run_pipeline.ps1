@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("smoke", "core", "tab_transformer", "modern", "sklearn_modern", "all_modules", "publication", "publication_core", "publication_full")]
-    [string]$Preset = "publication_core",
+    [ValidateSet("smoke", "core", "tab_transformer", "modern", "sklearn_modern", "all_modules", "publication", "full_run", "publication_full")]
+    [string]$Preset = "full_run",
     [switch]$SkipInstall,
     [switch]$NoVenv,
     [switch]$Help
@@ -16,13 +16,13 @@ Usage: .\run_pipeline.ps1 [-Preset NAME] [-SkipInstall] [-NoVenv]
 
 Presets:
   smoke             DDD Week 4 only; fastest end-to-end sanity check
-  publication_core  all modules with LR/XGB/XGB-LDT for paper tables (default)
+  full_run          all modules with LR/XGB/XGB-LDT (default)
   publication_full  expensive all-modules modern benchmark with XGB grid search
   core              LR-raw, XGB-raw, XGB-LDT
   tab_transformer   core + TABTX
   sklearn_modern    core + RF, ET, HGB, TABTX
   modern            core + RF, ET, HGB, LightGBM, CatBoost, TABTX
-  all_modules       alias of publication_core
+  all_modules       alias of full_run
 "@
 }
 
@@ -57,7 +57,7 @@ $presetConfig = @{
     sklearn_modern     = @{ Config = "config/experiment_sklearn_modern.yaml"; Requirements = "requirements-tab-transformer.txt" }
     all_modules        = @{ Config = "config/experiment_all_modules.yaml"; Requirements = "requirements-core.txt" }
     publication        = @{ Config = "config/experiment_all_modules.yaml"; Requirements = "requirements-core.txt" }
-    publication_core   = @{ Config = "config/experiment_all_modules.yaml"; Requirements = "requirements-core.txt" }
+    full_run           = @{ Config = "config/experiment_all_modules.yaml"; Requirements = "requirements-core.txt" }
     publication_full   = @{ Config = "config/experiment_publication_full.yaml"; Requirements = "requirements.txt" }
 }
 

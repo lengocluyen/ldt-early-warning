@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PRESET="publication_core"
+PRESET="full_run"
 SKIP_INSTALL=0
 NO_VENV=0
 
@@ -11,13 +11,13 @@ Usage: ./run_pipeline.sh [--preset NAME] [--skip-install] [--no-venv]
 
 Presets:
   smoke             DDD Week 4 only; fastest end-to-end sanity check
-  publication_core  all modules with LR/XGB/XGB-LDT for paper tables (default)
+  full_run          all modules with LR/XGB/XGB-LDT (default)
   publication_full  expensive all-modules modern benchmark with XGB grid search
   core              LR-raw, XGB-raw, XGB-LDT
   tab_transformer   core + TABTX
   sklearn_modern    core + RF, ET, HGB, TABTX
   modern            core + RF, ET, HGB, LightGBM, CatBoost, TABTX
-  all_modules       alias of publication_core
+  all_modules       alias of full_run
 EOF
 }
 
@@ -73,7 +73,7 @@ case "$PRESET" in
     CONFIG="config/experiment_sklearn_modern.yaml"
     REQUIREMENTS="requirements-tab-transformer.txt"
     ;;
-  all_modules|publication|publication_core)
+  all_modules|publication|full_run)
     CONFIG="config/experiment_all_modules.yaml"
     REQUIREMENTS="requirements-core.txt"
     ;;
