@@ -4,6 +4,8 @@ Anonymous reproducibility artifact accompanying a submission under review.
 
 The project implements an incremental Learner Digital Twin (LDT) for early-warning learning analytics. At each temporal checkpoint, it replays learner activity and assessment records into an RDF observation graph, extracts predictive features from that graph, generates at-risk predictions, and materializes feature attributions and evidence chains back into the graph.
 
+![Incremental evidence-grounded early-warning pipeline](results/pipeline.svg)
+
 ## What This Artifact Provides
 
 - A lightweight LDT ontology and SHACL integrity constraints.

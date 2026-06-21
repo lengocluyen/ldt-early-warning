@@ -4,6 +4,9 @@ This directory is the local destination for experiment outputs. It is kept out
 of version control because it can contain multi-gigabyte RDF graphs, learner
 identifiers inherited from the source data, and machine-specific logs.
 
+`pipeline.svg` is a curated static pipeline diagram intentionally versioned for
+the repository README. All other result artifacts remain local-only.
+
 Run an experiment to populate it:
 
 ```bash

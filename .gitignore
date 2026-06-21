@@ -16,6 +16,7 @@
 /data/splits/
 /results/*
 !/results/README.md
+!/results/pipeline.svg
 /results_v1/
 
 # Python environments, caches, coverage, and test outputs.
