@@ -25,7 +25,7 @@ src/           Data, graph, feature, model, evidence, and result modules
 tests/         Data-free artifact validation tests
 Oulab/         Local OULAD CSV location (not versioned)
 results/       Generated outputs (not versioned)
-run_pipeline.* Cross-platform one-command experiment launchers
+run_pipeline.sh Ubuntu/Linux one-command experiment launcher
 ```
 
 ## Data Access
@@ -49,10 +49,8 @@ The expected layout is documented in [Oulab/README.md](Oulab/README.md).
 ## Requirements
 
 - Python 3.10 or later
-- Linux, macOS, WSL, Git Bash, or PowerShell for the one-command launchers
+- Ubuntu/Linux with Bash for the one-command launcher
 - The OULAD files described above
-
-Native Windows PowerShell is supported by `run_pipeline.ps1`.
 
 ## Quick Start
 
@@ -61,12 +59,6 @@ The first run creates `.venv`, installs the required dependencies, executes the 
 ```bash
 chmod +x run_pipeline.sh
 ./run_pipeline.sh --preset smoke
-```
-
-On Windows PowerShell:
-
-```powershell
-.\run_pipeline.ps1 -Preset smoke
 ```
 
 The `smoke` preset runs the Week 4 core comparison for module DDD. It is the right first check after downloading the data.
